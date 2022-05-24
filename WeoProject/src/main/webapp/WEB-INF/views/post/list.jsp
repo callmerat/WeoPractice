@@ -7,19 +7,19 @@
 
 </head>
 <body>
-<h1>메인 페이지</h1>
+<h1>메인 페이지~ 좋은 하루 보내세요</h1>${sessionScope.loginVO}
 
 						<c:choose>
 							<c:when
 								test="${sessionScope.loginVO == null}">
 									로그인 안 했음
-									<a href="login.do">로그인 하기</a>
-									<a href="registation.do">회원가입 하기</a>
+									<a href="/user/login.do">로그인 하기</a>
+									<a href="/user/registation.do">회원가입 하기</a>
 							</c:when>
 							<c:when
 								test="${sessionScope.loginVO != null}">
 								로그인 했음
-									<a href="logout.do">로그아웃 하기</a>
+								           <input type="button" name="btnLogout" value="logout" class="btn btn-parimary"/>
 							</c:when>
 						</c:choose>
 
@@ -32,7 +32,8 @@
         </div>
         <div class="row">
             <input type="button" name="btnWrite" value="글작성"/>
-            <input type="button" name="btnLogout" value="logout" class="btn btn-parimary"/>
+				 <a href="/news/view.do">뉴스</a>
+				 <a href="/news/list.do">뉴스</a>
             <ul id='post'>
                 <c:forEach var="post" items="${posts}">
                     <li data-id="${post.id}" style="margin: 10px 0;cursor: pointer;">
