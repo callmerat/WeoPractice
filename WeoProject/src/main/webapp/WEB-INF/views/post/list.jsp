@@ -7,6 +7,22 @@
 
 </head>
 <body>
+<h1>메인 페이지</h1>
+
+						<c:choose>
+							<c:when
+								test="${sessionScope.loginVO == null}">
+									로그인 안 했음
+									<a href="login.do">로그인 하기</a>
+									<a href="registation.do">회원가입 하기</a>
+							</c:when>
+							<c:when
+								test="${sessionScope.loginVO != null}">
+								로그인 했음
+									<a href="logout.do">로그아웃 하기</a>
+							</c:when>
+						</c:choose>
+
 
     <div class="container">
         <div class="row">
