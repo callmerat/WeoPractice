@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.blog.user.mapper.UserMapper">
+
+    <insert id="registrationProcess">
+        INSERT INTO `user`(`id`, `name`, `passwd`, `email`)
+        VALUES (
+                 #{userId}
+                ,#{name}
+                ,#{passwd}
+                ,#{email}
+        )
+    </insert>
+
+    <select id="login" resultType="com.system.blog.user.vo.UserVO">
+        SELECT `id` as userId, `name`, `passwd`, `email`
+        FROM `user`
+        WHERE 1
+          and id=#{userId}
+    </select>
+</mapper>

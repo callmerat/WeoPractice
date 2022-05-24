@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.blog.post.mapper.CommentMapper">
+    <insert id="insertProcess">
+        INSERT INTO `comment` set
+                  `id`=#{id}
+                , `comment_text`=#{commentText}
+                , `reg_date`=now()
+                , `post_id`=#{postId}
+                , `user_id`=#{userId}
+
+    </insert>
+    <delete id="deleteProcess">
+        DELETE FROM `comment`
+        WHERE 1
+          and post_id=#{postId}
+          and id=#{commentId}
+          and user_id=#{userId}
+    </delete>
+
+  
+  <resultMap id="commentMap" type="egovframework.rte.psl.dataaccess.util.EgovMap">
+    <id column="id" property="id"/>
+    <result column="comment_text" property="commentText"/>
+    <result column="user_id" property="userId"/>
+    <result column="post_id" property="post_id"/>
+    <association column="user_id" property="user" select="userInfo"/>
+  </resultMap>
+  
+    <select id="list" resultMap="commentMap">
+        SELECT `id`, `comment_text`, `reg_date`, `post_id`, `user_id`
+        FROM `comment`
+        WHERE 1
+          and post_id=#{postId}
+    </select>
+
+    <select id="userInfo" resultType="com.system.blog.user.vo.UserVO">
+      SELECT id as userId, name
+      from `user`
+      where 1
+       and id=#{userId}
+    </select>
+</mapper>

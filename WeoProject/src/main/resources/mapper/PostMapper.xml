@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.system.blog.post.mapper.PostMapper">
+
+    <insert id="writeProcess">
+        INSERT INTO `post`(`id`, `category_id`, `title`, `content`, `user_id`, `reg_date`)
+        VALUES (
+            #{id}
+            ,#{categoryId}
+            ,#{title}
+            ,#{content}
+            ,#{userId}
+            ,now())
+    </insert>
+
+
+    <update id="updateProcess">
+        UPDATE `post` SET
+             `category_id`=#{categoryId}
+            ,`title`=#{title}
+            ,`content`=#{content}
+        WHERE 1
+          and id=#{id}
+          and `user_id`=#{userId}
+    </update>
+
+    <delete id="deleteProcess">
+        DELETE FROM `post`
+        WHERE 1
+          and id=#{id}
+          and `user_id`=#{userId}
+    </delete>
+
+    <resultMap id="postMap" type="com.system.blog.post.vo.PostVO">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="category_id" property="categoryId" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="reg_date" property="regDate" jdbcType="TIMESTAMP"/>
+        <association column="category_id" property="category" select="getCategory11" fetchType="eager"/>
+        <collection column="id" property="comment" select="getComment11" />
+    </resultMap>
+
+    <select id="getPost" resultMap="postMap">
+        /* getPost */
+        SELECT `id`, `category_id`, `title`, `content`, `user_id`, `reg_date`
+        FROM `post`
+        WHERE 1
+          and id = #{postId}
+    </select>
+
+    <select id="getCategory11" resultType="com.system.blog.post.vo.CategoryVO">
+        /* getCategory */
+        SELECT `id`, `name`, `user_id`
+        FROM `category`
+        WHERE 1
+          and id=#{categoryId}
+    </select>
+
+    <select id="getComment11" parameterType="java.lang.String" resultType="com.system.blog.post.vo.CommentVO">
+        /* getCategory */
+        SELECT *
+        FROM `comment`
+        WHERE 1
+        and post_id=#{id}
+    </select>
+
+    <select id="getSearch" resultMap="postMap">
+        /* getSearch */
+        SELECT `id`, `category_id`, `title`, `content`, `user_id`, `reg_date`
+        FROM `post`
+        WHERE 1
+    </select>
+</mapper>
