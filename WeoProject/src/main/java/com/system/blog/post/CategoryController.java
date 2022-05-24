@@ -45,7 +45,8 @@ public class CategoryController {
 
     @PostMapping(value = "insertProcess")
     public ResponseEntity insertProcess(@Login LoginVO loginVO, @RequestBody CategoryVO categoryVO) {
-        categoryVO.setId(Idgenerator.getId());
+        // 여기 있는 @Login가 argumentresolver
+    	categoryVO.setId(Idgenerator.getId());
         categoryVO.setUserId(loginVO.getUserId());
 
         int row = categoryMapper.insertProcess(categoryVO);

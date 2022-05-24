@@ -24,7 +24,6 @@ public class NewsAdminController {
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String getNewsManage(PageVO pageVO, Model model) {
 
-
         List<NewsVO> list = service.getAllNews(pageVO);
         int total = service.countAllNews();
 

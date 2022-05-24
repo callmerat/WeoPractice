@@ -11,14 +11,12 @@ import java.util.List;
 @Service
 public class DaumNewsService {
 
-
     @Autowired
     private DaumNewsMapper mapper;
 
     public List<NewsVO> getNews() {
         return mapper.getNews();
     }
-
 
     public List<NewsVO> getAllNews(PageVO pageVO) {
         return mapper.getAllNews(pageVO);
@@ -39,7 +37,6 @@ public class DaumNewsService {
     public int updateNews(NewsVO newsVO) {
         return mapper.updateNews(newsVO);
     }
-
 
     public int countAllNews() {
         return mapper.countAllNews();
