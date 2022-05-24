@@ -13,16 +13,13 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
 	<task:scheduled-tasks>
-		<task:scheduled ref="daumNewsScheduler" method="scrawal" cron="* /10 * * * *"/>
+		<task:scheduled ref="daumNewsScheduler" method="scrawal" cron="0 0/5 * * * ?"/>
 	</task:scheduled-tasks>
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 <!--	<mvc:annotation-driven />-->
-
-
-
 
 	<!-- 순서 제일 중요 -->
 	<mvc:annotation-driven>
