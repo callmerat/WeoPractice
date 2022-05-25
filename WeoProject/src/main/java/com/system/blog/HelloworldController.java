@@ -32,8 +32,8 @@ public class HelloworldController {
         return "redirect:/post/list.do";
     }
 
-	private String dir = "C:\\Users\\user\\Downloads\\workspaces\\springmvc-smarteditor2\\src\\main\\webapp\\blog\\";
-
+	private String dir = "C:\\Users\\osymi\\git\\WeoPractice\\WeoProject\\src\\main\\webapp\\blog\\";
+	
 
 	@RequestMapping(value = "/test123", method = RequestMethod.POST)
 	public @ResponseBody

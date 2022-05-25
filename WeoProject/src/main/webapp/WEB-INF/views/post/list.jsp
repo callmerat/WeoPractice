@@ -4,7 +4,6 @@
 <html>
 <head>
 	<title>Home</title>
-
 </head>
 <body>
 <h1>메인 페이지~ 좋은 하루 보내세요</h1>${sessionScope.loginVO}
@@ -31,8 +30,9 @@
         </div>
         <div class="row">
             <input type="button" name="btnWrite" value="글작성"/>
-				 <a href="/news/view.do">뉴스</a>
-				 <a href="/news/list.do">뉴스</a>
+				 <p><a href="/news/news.do">뉴스</a></p>
+				 <p><a href="/news/form.do">다음 기사 작성</a></p>
+				 <p><a href="/category/crud.do">카테고리 crud</a></p>
             <ul id='post'>
                 <c:forEach var="post" items="${posts}">
                     <li data-id="${post.id}" style="margin: 10px 0;cursor: pointer;">

@@ -107,10 +107,6 @@
 
         </div>
     </div>
-<h1>
-	${vo.title_name}
-</h1>
-
 
 <link href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
