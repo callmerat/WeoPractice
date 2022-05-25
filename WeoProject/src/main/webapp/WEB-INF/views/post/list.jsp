@@ -7,22 +7,21 @@
 
 </head>
 <body>
-<h1>메인 페이지~ 좋은 하루 보내세요</h1>${sessionScope.userID}
+<h1>메인 페이지~ 좋은 하루 보내세요</h1>${sessionScope.loginVO}
 
 						<c:choose>
 							<c:when
-								test="${sessionScope.userID == null}">
+								test="${sessionScope.loginVO == null}">
 									로그인 안 했음
 									<a href="/user/login.do">로그인 하기</a>
 									<a href="/user/registation.do">회원가입 하기</a>
 							</c:when>
 							<c:when
-								test="${sessionScope.userID != null}">
+								test="${sessionScope.loginVO != null}">
 								로그인 했음
-								           <input type="button" name="btnLogout" value="logout" class="btn btn-parimary"/>
+								<input type="button" name="btnLogout" value="logout" class="btn btn-parimary"/>
 							</c:when>
 						</c:choose>
-
 
     <div class="container">
         <div class="row">
@@ -40,7 +39,6 @@
                         <c:out value="${post.title}"/> :: ${post.regDate}
                     </li>
                 </c:forEach>
-
             </ul>
         </div>
     </div>

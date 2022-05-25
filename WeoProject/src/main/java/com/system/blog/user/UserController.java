@@ -59,8 +59,7 @@ public class UserController {
             loginVO.setUserId(user.getUserId());
             loginVO.setEmail(user.getEmail());
             loginVO.setName(user.getName());
-            String userID = userVO.getUserId();
-            session.setAttribute("userID", userID);
+            session.setAttribute("loginVO", loginVO);
         } else {
             throw new RuntimeException("login failed");
         }
