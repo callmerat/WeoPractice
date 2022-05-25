@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.system.blog.news.naver.NaverNewsMapper">
-    <insert id="createNews">
+    <insert id="createNewsNaver">
         insert into `naver_news` (`id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
         `title_name`, `title_contents`, `reporter`,
         `newspaper`, `open_yn`, `view_count`, `link`)
@@ -10,21 +10,21 @@
         #{newspaper}, #{open_yn}, 0, #{link})
     </insert>
 
-    <insert id="batchInsert" parameterType="java.util.List">
+    <insert id="batchInsertNaver" parameterType="java.util.List">
         INSERT INTO `naver_news`(`id`, `reg_date`, `category_id`, `thumbnail`, `summary`, `title_name`, `title_contents`, `reporter`, `newspaper`, `open_yn`, `view_count`, `link`)
         VALUES
             (#{item.id}, now(),1, #{item.thumbnail}, #{item.summary}, #{item.title_name},
             #{item.title_contents},#{item.reporter},#{item.newspaper},#{item.open_yn},#{item.view_count},#{item.link})
     </insert>
 
-    <insert id="batchInsert2" parameterType="java.util.List">
+    <insert id="batchInsert2Naver" parameterType="java.util.List">
         INSERT INTO `naver_news`(`id`, `reg_date`, `category_id`, `thumbnail`, `summary`, `title_name`, `title_contents`, `reporter`, `newspaper`, `open_yn`, `view_count`, `link`)
         VALUES
             (#{item.id}, now(),1, #{item.thumbnail}, #{item.summary}, #{item.titleName},
             #{item.titleContents},#{item.reporter},#{item.newspaper}, 'y', 0, #{item.link})
     </insert>
 
-    <update id="updateNews">
+    <update id="updateNewsNaver">
         UPDATE
         `naver_news`
         SET
@@ -42,14 +42,14 @@
     </update>
 
 
-    <select id="getNews" resultType="com.system.blog.news.naver.NewsVO">
+    <select id="getNewsNaver" resultType="com.system.blog.news.naver.NewsVONaver">
         SELECT
         `id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
         `title_name`, `title_contents`, `reporter`,
         `newspaper`, `open_yn`, `view_count`, `link`
         FROM `naver_news` WHERE 1
     </select>
-    <select id="getAllNews" resultType="com.system.blog.news.naver.NewsVO">
+    <select id="getAllNewsNaver" resultType="com.system.blog.news.naver.NewsVONaver">
         SELECT
         `id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
         `title_name`, `title_contents`, `reporter`,
@@ -59,13 +59,13 @@
         LIMIT #{offset}, #{size}
     </select>
 
-    <select id="countAllNews" resultType="java.lang.Integer">
+    <select id="countAllNewsNaver" resultType="java.lang.Integer">
         SELECT
         count(id)
         FROM `naver_news` WHERE 1
     </select>
 
-    <select id="detailNews" resultType="com.system.blog.news.naver.NewsVO">
+    <select id="detailNewsNaver" resultType="com.system.blog.news.naver.NewsVONaver">
         SELECT
         `id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
         `title_name`, `title_contents`, `reporter`,
@@ -73,7 +73,7 @@
         FROM `naver_news`
         WHERE `id` = #{id}
     </select>
-    <select id="getCategory" resultType="egovframework.rte.psl.dataaccess.util.EgovMap">
+    <select id="getCategoryNaver" resultType="egovframework.rte.psl.dataaccess.util.EgovMap">
         SELECT
         `id`, `name`, `sort`
         FROM `naver_news_category` WHERE 1

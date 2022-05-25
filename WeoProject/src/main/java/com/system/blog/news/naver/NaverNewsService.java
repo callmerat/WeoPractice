@@ -14,32 +14,32 @@ public class NaverNewsService {
     @Autowired
     private NaverNewsMapper mapper;
 
-    public List<NewsVO> getNews() {
-        return mapper.getNews();
+    public List<NewsVONaver> getNewsNaver() {
+        return mapper.getNewsNaver();
     }
 
-    public List<NewsVO> getAllNews(PageVO pageVO) {
-        return mapper.getAllNews(pageVO);
+    public List<NewsVONaver> getAllNewsNaver(PageVO pageVO) {
+        return mapper.getAllNewsNaver(pageVO);
     }
 
-    public NewsVO detailNews(String id) {
-        return mapper.detailNews(id);
+    public NewsVONaver detailNewsNaver(String id) {
+        return mapper.detailNewsNaver(id);
     }
 
-    public List<EgovMap> getCategory() {
-        return mapper.getCategory();
+    public List<EgovMap> getCategoryNaver() {
+        return mapper.getCategoryNaver();
     }
 
-    public int createNews(NewsVO newsVO) {
-        return mapper.createNews(newsVO);
+    public int createNewsNaver(NewsVONaver newsVO) {
+        return mapper.createNewsNaver(newsVO);
     }
 
-    public int updateNews(NewsVO newsVO) {
-        return mapper.updateNews(newsVO);
+    public int updateNewsNaver(NewsVONaver newsVO) {
+        return mapper.updateNewsNaver(newsVO);
     }
 
     public int countAllNews() {
-        return mapper.countAllNews();
+        return mapper.countAllNewsNaver();
     }
 
 }

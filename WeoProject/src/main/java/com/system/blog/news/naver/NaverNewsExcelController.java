@@ -51,7 +51,7 @@ public class NaverNewsExcelController {
 
         String downloadFileName = "naver_news.xlsx";
 
-        List<NewsVO> news = naverNewsMapper.getNews();
+        List<NewsVONaver> news = naverNewsMapper.getNewsNaver();
         Map beans = new HashMap();
         beans.put("news", news);
 
@@ -97,7 +97,7 @@ public class NaverNewsExcelController {
             throw new NoDataException("Excel upload Failed");
         }
 
-        naverNewsMapper.batchInsert2(pubMaps);
+        naverNewsMapper.batchInsert2Naver(pubMaps);
 
         return ResponseEntity.ok(pubMaps);
     }

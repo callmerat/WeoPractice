@@ -10,7 +10,7 @@
 
 	<div class="container">
 		<div class="row">
-			게시판
+			<h1>게시판</h1>
 			<input type="button" name="btnWrite" value="새 글 작성하기" />
 
 			<ul id='post'>

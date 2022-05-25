@@ -1,9 +1,8 @@
 package com.system.blog.news;
 
 
-import com.system.blog.ResponseVO;
-import com.system.blog.config.PageVO;
-import egovframework.rte.psl.dataaccess.util.EgovMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
+import com.system.blog.ResponseVO;
+import com.system.blog.config.PageVO;
+import com.system.blog.news.naver.NaverNewsService;
+import com.system.blog.news.naver.NewsVONaver;
+
+import egovframework.rte.psl.dataaccess.util.EgovMap;
 
 @RequestMapping(value = "news")
 @Controller
@@ -21,6 +25,9 @@ public class NewsAdminController {
     @Autowired
     private DaumNewsService service;
 
+    @Autowired
+    private NaverNewsService service2;
+    
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String getNewsManage(PageVO pageVO, Model model) {
 
@@ -29,6 +36,12 @@ public class NewsAdminController {
 
         model.addAttribute("list", list);
         model.addAttribute("totalCount", total);
+        
+        List<NewsVONaver> list2 = service2.getAllNewsNaver(pageVO);
+        int total2 = service2.countAllNews();
+        
+        model.addAttribute("list2", list2);
+        model.addAttribute("totalCount2", total2);
         return "news/list";
     }
 

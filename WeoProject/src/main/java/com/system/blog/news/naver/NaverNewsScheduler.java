@@ -1,6 +1,9 @@
 package com.system.blog.news.naver;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,8 +11,9 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.system.blog.news.naver.NewsVONaver;
+
+
 
 @Component
 public class NaverNewsScheduler {
@@ -30,7 +34,7 @@ public class NaverNewsScheduler {
         final Elements categoryElem = document.select(".txt_category");
 
         final int size = news_list.size();
-        List<NewsVO> data = new ArrayList<>();
+        List<NewsVONaver> data = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
             try {
@@ -58,7 +62,7 @@ public class NaverNewsScheduler {
                 String reporter = getElementText(reportElem, 0);
                 String titleThumbnail = getElementSource(thumbnailEleme, 0);
 
-                NewsVO newsVO = new NewsVO();
+                NewsVONaver newsVO = new NewsVONaver();
                 newsVO.setId(id);
                 newsVO.setThumbnail(titleThumbnail);
                 newsVO.setSummary("summary");
@@ -79,7 +83,7 @@ public class NaverNewsScheduler {
 
         System.out.println("finished = ");
 
-        mapper.batchInsert(data);
+        mapper.batchInsertNaver(data);
 
 
 

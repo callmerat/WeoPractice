@@ -7,22 +7,22 @@ import java.util.List;
 
 public interface NaverNewsMapper {
 
-    List<NewsVO> getNews();
+    List<NewsVONaver> getNewsNaver();
 
-    List<NewsVO> getAllNews(PageVO pageVO);
+    List<NewsVONaver> getAllNewsNaver(PageVO pageVO);
 
-    NewsVO detailNews(String id);
+    NewsVONaver detailNewsNaver(String id);
 
-    List<EgovMap> getCategory();
+    List<EgovMap> getCategoryNaver();
 
-    int createNews(NewsVO newsVO);
+    int createNewsNaver(NewsVONaver newsVO);
 
-    int updateNews(NewsVO newsVO);
+    int updateNewsNaver(NewsVONaver newsVO);
 
-    int countAllNews();
+    int countAllNewsNaver();
 
-    void batchInsert(List<NewsVO> data);
+    void batchInsertNaver(List<NewsVONaver> data);
 
-    void batchInsert2(List<EgovMap> data);
+    void batchInsert2Naver(List<EgovMap> data);
 
 }

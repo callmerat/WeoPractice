@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Data
-public class NewsVO {
+public class NewsVONaver {
 
     private String id;
     private String reg_date;
