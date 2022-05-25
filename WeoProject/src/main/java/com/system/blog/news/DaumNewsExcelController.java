@@ -86,7 +86,6 @@ public class DaumNewsExcelController {
             throw new NoDataException("invalid Excel format file");
         }
 
-
         List<EgovMap> pubMaps = null;
         try {
             pubMaps = ExcelUtils.xlsx_excelFileUpload(

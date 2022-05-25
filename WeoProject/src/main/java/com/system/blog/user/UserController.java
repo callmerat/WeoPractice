@@ -47,7 +47,6 @@ public class UserController {
         return "user/login";
     }
 
-
     @GetMapping(value = "login.do")
     private String login() {
         return "user/login";

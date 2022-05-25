@@ -80,16 +80,6 @@ public class DaumNewsScheduler {
 
         mapper.batchInsert(data);
 
-
-
-//        String COLLECTION = "news";
-//
-//        Firestore db = FirestoreClient.getFirestore();
-//        for (NewsVO datum : data) {
-//            db.collection(COLLECTION).document(datum.getId()).set(datum);
-//        }
-
-
     }
 
     private static String getElementAlt(Elements elements, int index) {

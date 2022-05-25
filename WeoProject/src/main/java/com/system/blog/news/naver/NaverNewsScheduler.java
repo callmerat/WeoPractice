@@ -1,6 +1,5 @@
 package com.system.blog.news.naver;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class NaverNewsScheduler {
         final Elements news_list = document.select(".list_content");
         final Elements thumbnailElem = document.select(".list_content > a > img");
         final Elements linkElem = document.select(".list_content > a");
-        final Elements titleElem = document.select(".media_end_head_headline");
+        final Elements titleElem = document.select(".list_content > a");
         final Elements companyElem = document.select(".rankingnews_thumb > img");
 
         final int size = news_list.size();
@@ -40,6 +39,7 @@ public class NaverNewsScheduler {
                 String id = link.split("/")[4]; // 앞에 004 이런 번호
                 String id2 = link.split("/")[5].split("?")[0]; // 뒤에 일련번호
 
+                // 링크 접속
                 Connection conn1 = Jsoup.connect(link);
                 Document document1 = conn1.get();
 
@@ -77,7 +77,6 @@ public class NaverNewsScheduler {
         System.out.println("finished = ");
 
         mapper.batchInsertNaver(data);
-
 
     }
 
