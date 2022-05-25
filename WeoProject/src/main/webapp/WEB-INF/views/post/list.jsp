@@ -30,7 +30,8 @@
         </div>
         <div class="row">
             <input type="button" name="btnWrite" value="글작성"/>
-				 <p><a href="/news/news.do">뉴스</a></p>
+				 <p><a href="/naver_news/naver_news.do">네이버 뉴스</a></p>
+				 <p><a href="/news/news.do">다음 뉴스</a></p>
 				 <p><a href="/news/form.do">다음 기사 작성</a></p>
 				 <p><a href="/category/crud.do">카테고리 crud</a></p>
             <ul id='post'>

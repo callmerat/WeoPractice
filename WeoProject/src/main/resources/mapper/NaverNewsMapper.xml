@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.blog.news.naver.NaverNewsMapper">
+    <insert id="createNews">
+        insert into `naver_news` (`id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
+        `title_name`, `title_contents`, `reporter`,
+        `newspaper`, `open_yn`, `view_count`, `link`)
+        values (#{id}, #{reg_date}, #{category_id}, #{thumbnail}, #{summary},
+        #{title_name}, #{title_contents}, #{reporter},
+        #{newspaper}, #{open_yn}, 0, #{link})
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO `naver_news`(`id`, `reg_date`, `category_id`, `thumbnail`, `summary`, `title_name`, `title_contents`, `reporter`, `newspaper`, `open_yn`, `view_count`, `link`)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, now(),1, #{item.thumbnail}, #{item.summary}, #{item.title_name},
+            #{item.title_contents},#{item.reporter},#{item.newspaper},#{item.open_yn},#{item.view_count},#{item.link})
+        </foreach>
+        on duplicate key update id = values(id)
+    </insert>
+
+    <insert id="batchInsert2" parameterType="java.util.List">
+        INSERT INTO `naver_news`(`id`, `reg_date`, `category_id`, `thumbnail`, `summary`, `title_name`, `title_contents`, `reporter`, `newspaper`, `open_yn`, `view_count`, `link`)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, now(),1, #{item.thumbnail}, #{item.summary}, #{item.titleName},
+            #{item.titleContents},#{item.reporter},#{item.newspaper}, 'y', 0, #{item.link})
+        </foreach>
+        on duplicate key update id = values(id)
+    </insert>
+
+    <update id="updateNews">
+        UPDATE
+        `naver_news`
+        SET
+        `category_id` = #{category_id},
+        `thumbnail` = #{thumbnail},
+        `summary` = #{summary},
+        `title_name` = #{title_name},
+        `title_contents` = #{title_contents},
+        `reporter` = #{reporter},
+        `newspaper` = #{newspaper},
+        `open_yn` = #{open_yn},
+        `link` = #{link}
+        WHERE
+        id = #{id}
+    </update>
+
+
+    <select id="getNews" resultType="com.system.blog.news.naver.NewsVO">
+        SELECT
+        `id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
+        `title_name`, `title_contents`, `reporter`,
+        `newspaper`, `open_yn`, `view_count`, `link`
+        FROM `naver_news` WHERE 1
+    </select>
+    <select id="getAllNews" resultType="com.system.blog.news.naver.NewsVO">
+        SELECT
+        `id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
+        `title_name`, `title_contents`, `reporter`,
+        `newspaper`, `open_yn`, `view_count`, `link`
+        FROM `naver_news` WHERE 1
+        ORDER BY `reg_date` desc
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="countAllNews" resultType="java.lang.Integer">
+        SELECT
+        count(id)
+        FROM `naver_news` WHERE 1
+    </select>
+
+    <select id="detailNews" resultType="com.system.blog.news.naver.NewsVO">
+        SELECT
+        `id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
+        `title_name`, `title_contents`, `reporter`,
+        `newspaper`, `open_yn`, `view_count`, `link`
+        FROM `naver_news`
+        WHERE `id` = #{id}
+    </select>
+    <select id="getCategory" resultType="egovframework.rte.psl.dataaccess.util.EgovMap">
+        SELECT
+        `id`, `name`, `sort`
+        FROM `naver_news_category` WHERE 1
+    </select>
+</mapper>

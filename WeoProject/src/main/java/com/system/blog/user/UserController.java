@@ -52,17 +52,16 @@ public class UserController {
     @PostMapping(value = "loginProcess")
     private ResponseEntity loginProcess(HttpServletRequest request, @RequestBody UserVO userVO) {
         UserVO user = userMapper.login(userVO);
+        LoginVO loginVO = new LoginVO();
+        HttpSession session = request.getSession();
         if (user != null) {
-            HttpSession session = request.getSession();
-
-            LoginVO loginVO = new LoginVO();
             loginVO.setUserId(user.getUserId());
             loginVO.setEmail(user.getEmail());
             loginVO.setName(user.getName());
-            session.setAttribute("loginVO", loginVO);
         } else {
             throw new RuntimeException("login failed");
         }
+        session.setAttribute("loginVO", loginVO);
         return ResponseEntity.ok().body(ResponseVO.of("ok"));
     }
 

@@ -29,17 +29,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping(value = "news")
+@RequestMapping(value = "naver_news")
 @Controller
 public class NaverNewsExcelController {
 
     @Autowired
-    private NaverNewsMapper daumNewsMapper;
+    private NaverNewsMapper naverNewsMapper;
 
     @Autowired
     ResourceLoader resourceLoader;
 
-    @GetMapping(value = "/download")
+    @GetMapping(value = "/naver_download")
     private void news_download(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         Resource resource = null;
@@ -49,9 +49,9 @@ public class NaverNewsExcelController {
             throw new NoDataException("Excel template doesn't exist");
         }
 
-        String downloadFileName = "daum_news.xlsx";
+        String downloadFileName = "naver_news.xlsx";
 
-        List<NewsVO> news = daumNewsMapper.getNews();
+        List<NewsVO> news = naverNewsMapper.getNews();
         Map beans = new HashMap();
         beans.put("news", news);
 
@@ -59,7 +59,7 @@ public class NaverNewsExcelController {
     }
 
 
-    @PostMapping("/upload")
+    @PostMapping("/naver_upload")
     private ResponseEntity
     fitsizeUpload(@RequestBody MultipartFile fileObject) throws IOException {
 
@@ -97,7 +97,7 @@ public class NaverNewsExcelController {
             throw new NoDataException("Excel upload Failed");
         }
 
-        daumNewsMapper.batchInsert2(pubMaps);
+        naverNewsMapper.batchInsert2(pubMaps);
 
         return ResponseEntity.ok(pubMaps);
     }
