@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>메인 페이지~ 좋은 하루 보내세요</h1>${sessionScope.loginVO}
-
+${loginVO}
 						<c:choose>
 							<c:when
 								test="${sessionScope.loginVO == null}">

@@ -17,15 +17,15 @@ public class NaverNewsScheduler {
     @Autowired
     private NaverNewsMapper mapper;
 
-    public void scrawal() throws Exception {
-        String url = "https://news.daum.net/";
+    public void naver_scrawal() throws Exception {
+        String url = "https://news.naver.com/main/ranking/popularDay.naver";
         Connection conn = Jsoup.connect(url);
         Document document = conn.get();
 
         final Elements news_list = document.select(".item_issue");
         final Elements thumbnailElem = document.select(".item_issue > a > img");
         final Elements linkElem = document.select(".item_issue > a");
-        final Elements titleElem = document.select(".item_issue .tit_g > .link_txt");
+        final Elements titleElem = document.select(".media_end_head_headline");
         final Elements companyElem = document.select(".logo_cp > .thumb_g");
         final Elements categoryElem = document.select(".txt_category");
 
@@ -44,9 +44,9 @@ public class NaverNewsScheduler {
                 Connection conn1 = Jsoup.connect(link);
                 Document document1 = conn1.get();
 
-                Elements contentsElem = document1.select("#harmonyContainer p");
-                Elements reportElem = document1.select("span.txt_info");
-                Elements thumbnailEleme = document1.select("figure.origin_fig img");
+                Elements contentsElem = document1.select("#harmonyContainer p"); // 내용
+                Elements reportElem = document1.select("span.txt_info"); // 기자 이름
+                Elements thumbnailEleme = document1.select("#img_a1 img"); // 썸네일 이미지
 
                 int size1 = contentsElem.size();
                 String title_contents = "";

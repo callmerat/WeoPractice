@@ -44,9 +44,9 @@ public class DaumNewsScheduler {
                 Connection conn1 = Jsoup.connect(link);
                 Document document1 = conn1.get();
 
-                Elements contentsElem = document1.select("#harmonyContainer p");
-                Elements reportElem = document1.select("span.txt_info");
-                Elements thumbnailEleme = document1.select("figure.origin_fig img");
+                Elements contentsElem = document1.select("#harmonyContainer p"); // 내용
+                Elements reportElem = document1.select("span.txt_info"); // 기자 이름
+                Elements thumbnailEleme = document1.select("figure.origin_fig img"); // 썸네일 이미지
 
                 int size1 = contentsElem.size();
                 String title_contents = "";

@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Daum News</title>
+	<title>Naver News</title>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
         <div class="row">
 
             <h1>
-                Daum News
+                Naver News
             </h1>
 
 <a href="/post/list.do">메인 가기</a>
@@ -40,7 +40,7 @@
                     <td>
                         <img src="${vo.thumbnail}" alt="${vo.title_name}" width="70"/>
                     </td>
-                    <td><a href="/news/form/${vo.id}">${vo.title_name}</a></td>
+                    <td><a href="/naver_news/form/${vo.id}">${vo.title_name}</a></td>
                     <td>${vo.newspaper}</td>
                     <td>${vo.reg_date}</td>
                     <td>
@@ -78,7 +78,7 @@ $(document).ready(function(){
     });
 
     $('[name="btnExcel"]').on('click', function() {
-        document.querySelector('#hframe').src  = '/news/download';
+        document.querySelector('#hframe').src  = '/naver_news/download';
     });
 
     $('[name="btnExcel2"]').on('click', function() {
@@ -91,7 +91,7 @@ $(document).ready(function(){
 
          $.ajax({
              type: "POST",
-             url: "/news/upload",
+             url: "/naver_news/upload",
              data: data,
              processData: false,
              contentType: false,
@@ -110,7 +110,7 @@ $(document).ready(function(){
 });
 
 function goPage(cpage) {
-    location.href='/news/news.do?page='+cpage;
+    location.href='/naver_news/naver_news.do?page='+cpage;
 }
 </script>
 </body>
