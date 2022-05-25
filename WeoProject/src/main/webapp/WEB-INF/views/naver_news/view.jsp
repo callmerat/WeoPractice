@@ -11,8 +11,6 @@
 <h1>
 	${vo.title_name}
 </h1>
-
-
     <p>
         ${vo.reg_date},
         ${vo.reporter},

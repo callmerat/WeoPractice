@@ -3,21 +3,21 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>${vo.title_name}</title>
+	<title>${vo2.title_name}</title>
 </head>
 <body>
     <div class="container">
         <div class="row">
 
-            <h1>Daum 기사 작성</h1>
+            <h1>Naver 기사 작성</h1>
             <form name="form" method="post">
             <table class="table">
                 <tr>
                     <th>아이디</th>
                     <td>
-                        <input type="text" name="id" value="${vo.id}"/>
+                        <input type="text" name="id" value="${vo2.id}"/>
                     </td>
-                    <th>오픈여부(${vo.open_yn})</th>
+                    <th>오픈여부(${vo2.open_yn})</th>
                     <td>
                         <input type="radio" name="open_yn" value="Y"/> 공개
                         <input type="radio" name="open_yn" value="N"/> 비공개
@@ -26,13 +26,13 @@
                 <tr>
                     <th>등록일</th>
                     <td>
-                        ${vo.reg_date}
+                        ${vo2.reg_date}
                     </td>
                     <th>기사 카테고리</th>
                     <td>
                         <select name="category_id">
-                            <c:forEach var="vo" items="${category}">
-                                <option value="${vo.id}">${vo.name}</option>
+                            <c:forEach var="vo2" items="${category2}">
+                                <option value="${vo2.id}">${vo2.name}</option>
                             </c:forEach>
                         </select>
                     </td>
@@ -40,26 +40,26 @@
                 <tr>
                     <th>제목</th>
                     <td colspan="3">
-                        <input type="text" name="title_name" value='${vo.title_name}' size="90"/>
+                        <input type="text" name="title_name" value='${vo2.title_name}' size="90"/>
                     </td>
                 </tr>
                 <tr>
                     <th>기사요약</th>
                     <td colspan="3">
-                        <textarea name="summary" style="width:900px;height:100px;">${vo.summary}</textarea>
+                        <textarea name="summary" style="width:900px;height:100px;">${vo2.summary}</textarea>
                     </td>
                 </tr>
                 <tr>
                     <th>기사내용</th>
                     <td colspan="3">
-                        <textarea id="ir1" name="title_contents" style="width:890px;height:400px;">${vo.title_contents}</textarea>
+                        <textarea id="ir1" name="title_contents" style="width:890px;height:400px;">${vo2.title_contents}</textarea>
                     </td>
                 </tr>
 
                 <tr>
                     <th>썸네일</th>
                     <td colspan="3">
-                        <input type="text" name="thumbnail" value="${vo.thumbnail}" size="100"/>
+                        <input type="text" name="thumbnail" value="${vo2.thumbnail}" size="100"/>
                     </td>
                 </tr>
 
@@ -69,27 +69,27 @@
                         <input type="file" name="file_thumbnail" value="" style="display:none;"/>
                         <input type="button" name="btn_thumbnail" value="파일첨부"/>
                         <input type="hidden" name="pathNm" value=""/>
-                        <input type="text" name="title_thumbnail" value="${vo.title_thumbnail}" size="100"/>
-                        <img src="${vo.title_thumbnail}" alt="" id="title_thumbnail"/>
+                        <input type="text" name="title_thumbnail" value="${vo2.title_thumbnail}" size="100"/>
+                        <img src="${vo2.title_thumbnail}" alt="" id="title_thumbnail"/>
                     </td>
                 </tr>
                 <tr>
                     <th>기자</th>
                     <td colspan="3">
-                        <input type="text" name="reporter" value="${vo.reporter}" size="100"/>
+                        <input type="text" name="reporter" value="${vo2.reporter}" size="100"/>
                     </td>
                 </tr>
 
                 <tr>
                     <th>회사</th>
                     <td colspan="3">
-                        <input type="text" name="newspaper" value="${vo.newspaper}" size="100"/>
+                        <input type="text" name="newspaper" value="${vo2.newspaper}" size="100"/>
                     </td>
                 </tr>
                 <tr>
                     <th>원문링크</th>
                     <td colspan="3">
-                        <input type="text" name="link" value="${vo.link}" size="100"/>
+                        <input type="text" name="link" value="${vo2.link}" size="100"/>
                     </td>
                 </tr>
                 <tr>
@@ -190,9 +190,9 @@ $(document).ready(function(){
     });
 
 //    $('[name="title_name"]').val();
-    $('[name="category_id"]').val('${vo.category_id}');
+    $('[name="category_id"]').val('${vo2.category_id}');
 
-    var st = '${vo.open_yn}';
+    var st = '${vo2.open_yn}';
     $('input:radio[name="open_yn"]:input[value="' + st + '"]').attr("checked", true);
 
     // submit
@@ -217,12 +217,12 @@ $(document).ready(function(){
         }
 
 <c:choose>
-    <c:when test="${not empty vo.id}">
+    <c:when test="${not empty vo2.id}">
 
-        obj.id = '${vo.id}';
+        obj.id = '${vo2.id}';
         $.ajax({
             type: "put",
-            url: "/news/update",
+            url: "/naver_news/update",
             data: JSON.stringify(obj),
             contentType: "application/json",
             success: function (response) {
@@ -238,7 +238,7 @@ $(document).ready(function(){
         // 등록
         $.ajax({
             type: "post",
-            url: "/news/create",
+            url: "/naver_news/create",
             data: JSON.stringify(obj),
             contentType: "application/json",
             success: function (response) {

@@ -68,6 +68,10 @@
 
 			<h1>Naver News</h1>
 
+			<div>
+				<input type="button" name="btn_newform2" value="신규작성">
+			</div>
+			
 			<h2>전체 : ${totalCount2} 건</h2>
 			<div style="position: relative; top: -41px; left: 700px;">
 				<button name="btnExcel">엑셀다운로드</button>
@@ -84,16 +88,16 @@
 					<th>기사원문
 					<th>
 				</tr>
-				<c:forEach var="vo" items="${list2}">
+				<c:forEach var="vo2" items="${list2}">
 					<tr>
-						<td><img src="${vo.thumbnail}" alt="${vo.title_name}"
+						<td><img src="${vo2.thumbnail}" alt="${vo2.title_name}"
 							width="70" /></td>
-						<td><a href="/news/form/${vo.id}">${vo.title_name}</a></td>
-						<td>${vo.newspaper}</td>
-						<td>${vo.reg_date}</td>
-						<td><a href="/popup/news/view/${vo.id}" target="_blank">앱뷰</a>
+						<td><a href="/naver_news/form/${vo2.id}">${vo2.title_name}</a></td>
+						<td>${vo2.newspaper}</td>
+						<td>${vo2.reg_date}</td>
+						<td><a href="/popup/news/view/${vo2.id}" target="_blank">앱뷰</a>
 						</td>
-						<td><a href="${vo.link}" target="_blank">원문보기</a></td>
+						<td><a href="${vo2.link}" target="_blank">원문보기</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -128,6 +132,10 @@
 								location.href = '/news/form';
 							});
 
+							$('[name="btn_newform2"]').on('click', function() {
+								location.href = '/naver_news/form';
+							});
+							
 							$('[name="btnExcel"]')
 									.on(
 											'click',

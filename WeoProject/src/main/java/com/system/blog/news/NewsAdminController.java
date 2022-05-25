@@ -31,17 +31,21 @@ public class NewsAdminController {
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String getNewsManage(PageVO pageVO, Model model) {
 
+    	// 다음 뉴스 전체 조회
         List<NewsVO> list = service.getAllNews(pageVO);
         int total = service.countAllNews();
 
         model.addAttribute("list", list);
         model.addAttribute("totalCount", total);
         
+        // 네이버 뉴스 전체 조회
         List<NewsVONaver> list2 = service2.getAllNewsNaver(pageVO);
         int total2 = service2.countAllNews();
         
         model.addAttribute("list2", list2);
         model.addAttribute("totalCount2", total2);
+        
+        // 뷰
         return "news/list";
     }
 
@@ -60,7 +64,6 @@ public class NewsAdminController {
         model.addAttribute("category", category);
         return "news/form";
     }
-
 
     @RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
     public String formNews(@PathVariable("id") String id, Model model) {
