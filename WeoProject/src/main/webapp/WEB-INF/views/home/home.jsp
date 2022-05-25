@@ -52,6 +52,9 @@ width:100%;
 			<p>
 				<a href="/category/crud.do">카테고리 crud</a>
 			</p>
+			<p>
+				<a href="test.do">vue.js 연습</a>
+			</p>
 
 		</div>
 	</div>

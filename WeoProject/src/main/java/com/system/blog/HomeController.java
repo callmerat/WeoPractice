@@ -17,5 +17,10 @@ public class HomeController {
     private String home(Model model) {
     	return "home/home";
     }
+    
+    @GetMapping(value = "test.do")
+    private String test(Model model) {
+    	return "home/test";
+    }
 
 }

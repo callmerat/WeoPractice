@@ -26,7 +26,6 @@
 
 	<context:component-scan base-package="com.system.blog"/>
 
-
 	<!-- 데이터 소스 설정  -->
 	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
