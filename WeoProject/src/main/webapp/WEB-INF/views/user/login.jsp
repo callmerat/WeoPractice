@@ -52,7 +52,7 @@ $(document).ready(function () {
 			data: JSON.stringify(login),
 			contentType: "application/json",
 			success: function (response) {
-				location.href='/post/list.do';
+				location.href='/home/home.do'; //로그인 성공 시 보내줄 jsp
 			}
 		});
 		//--------------------------------

@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Daum News</title>
+	<title>News</title>
 </head>
 <body>
 
@@ -18,7 +18,11 @@
                 Daum News
             </h1>
 
-<a href="/post/list.do">메인 가기</a>
+<a href="/home/home.do">메인 가기</a>
+
+            <div>
+                <input type="button" name="btn_newform" value="신규작성">
+            </div>
 
             <h2>전체 : ${totalCount} 건</h2>
             <div style="position: relative; top: -41px; left:700px;">
@@ -55,9 +59,55 @@
 
             <tags:pagination cpage="${param.pageIndex}" pageSize="10" groupSize="${pageVO.groupSize}" totalCount="${totalCount}"/>
 
-            <div style="margin:0 auto; width: 500px; margin-top: 50px;">
-                <input type="button" name="btn_newform" value="신규작성">
+
+
+        </div>
+    </div>
+    <iframe src="about:blank" id="hframe" width="0" height="0"></iframe>
+    
+    
+    <div class="container">
+        <div class="row">
+
+            <h1>
+                Naver News
+            </h1>
+
+            <h2>전체 : ${totalCount} 건</h2>
+            <div style="position: relative; top: -41px; left:700px;">
+                <button name="btnExcel">엑셀다운로드</button>
+                <button name="btnExcel2">엑셀업로드</button>
+                <input type="file" name="fileObject" style="display:none;"/>
             </div>
+            <table class="pure-table pure-table-bordered">
+                <tr>
+                    <th>썸네일</th>
+                    <th>제목</th>
+                    <th>매체</th>
+                    <th>등록일</th>
+                    <th>편집보기</tn>
+                    <th>기사원문<th>
+                </tr>
+                <c:forEach var="vo" items="${list}">
+                <tr>
+                    <td>
+                        <img src="${vo.thumbnail}" alt="${vo.title_name}" width="70"/>
+                    </td>
+                    <td><a href="/news/form/${vo.id}">${vo.title_name}</a></td>
+                    <td>${vo.newspaper}</td>
+                    <td>${vo.reg_date}</td>
+                    <td>
+                        <a href="/popup/news/view/${vo.id}" target="_blank">앱뷰</a>
+                    </td>
+                    <td>
+                        <a href="${vo.link}" target="_blank">원문보기</a>
+                    </td>
+                </tr>
+                </c:forEach>
+            </table>
+
+            <tags:pagination cpage="${param.pageIndex}" pageSize="10" groupSize="${pageVO.groupSize}" totalCount="${totalCount}"/>
+
 
 
         </div>

@@ -4,22 +4,55 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>게시판</title>
+<title>Home</title>
+<style>
+.container2 {
+	display: flex;
+	justify-content: space-around;
+}
+
+h1{
+text-align: center; 
+width:100%;
+}
+</style>
 </head>
 <body>
+	<h1>메인 페이지~ 좋은 하루 보내세요</h1>${sessionScope.loginVO}
+	${userId} ${sessionScope.userId} ${userVO} ${id} ${email}
+	<hr>
+	<div class="container2">
+		<c:choose>
+			<c:when test="${sessionScope.loginVO == null}">
+									로그인 안 했음
+									<a href="/user/login.do">로그인 하기</a>
+				<a href="/user/registation.do">회원가입 하기</a>
+			</c:when>
+			<c:when test="${sessionScope.loginVO != null}">
+								로그인 했음
+								<input type="button" name="btnLogout" value="logout"
+					class="btn btn-parimary" />
+			</c:when>
+		</c:choose>
+	</div>
+
+	<hr>
 
 	<div class="container">
 		<div class="row">
-			게시판
-			<input type="button" name="btnWrite" value="새 글 작성하기" />
+			<p>
+				<a href="/news/news.do">뉴스</a>
+			</p>
+			<p>
+				<a href="/post/list.do">게시판</a>
+			</p>
+			<p>
+				<a href="/news/news.do">소주 매출</a>
+			</p>
+			<p>
+				<a href="/category/crud.do">카테고리 crud</a>
+			</p>
 
-			<ul id='post'>
-				<c:forEach var="post" items="${posts}">
-					<li data-id="${post.id}" style="margin: 10px 0; cursor: pointer;">
-						<c:out value="${post.title}" /> :: ${post.regDate}
-					</li>
-				</c:forEach>
-			</ul>
 		</div>
 	</div>
 

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,24 +31,7 @@ public class HelloworldController {
     	for (String string : arr) {
 			System.out.println(string);
 		}
-        return "redirect:/post/list.do";
+        return "redirect:/home/home.do";
     }
 
-	private String dir = "C:\\Users\\osymi\\git\\WeoPractice\\WeoProject\\src\\main\\webapp\\blog\\";
-	
-
-	@RequestMapping(value = "/test123", method = RequestMethod.POST)
-	public @ResponseBody
-	HashMap test123(MultipartFile multipartFile) throws IOException {
-
-		String originalFilename = multipartFile.getOriginalFilename();
-
-		File file = new File(dir, originalFilename);
-		multipartFile.transferTo(file);
-
-		HashMap map = new HashMap();
-		map.put("fileName", originalFilename);
-		map.put("url", "/blog/" + originalFilename);
-		return map;
-	}
 }

@@ -40,6 +40,7 @@ public class NaverNewsScheduler {
                 String newspaper = getElementAlt(companyElem, i);
                 String category  = getElementText(categoryElem, i);
                 String id = link.split("/")[4];
+                String id2 = link.split("/")[5];
 
                 Connection conn1 = Jsoup.connect(link);
                 Document document1 = conn1.get();

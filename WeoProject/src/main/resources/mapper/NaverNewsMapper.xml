@@ -13,21 +13,15 @@
     <insert id="batchInsert" parameterType="java.util.List">
         INSERT INTO `naver_news`(`id`, `reg_date`, `category_id`, `thumbnail`, `summary`, `title_name`, `title_contents`, `reporter`, `newspaper`, `open_yn`, `view_count`, `link`)
         VALUES
-        <foreach collection="list" item="item" separator=",">
             (#{item.id}, now(),1, #{item.thumbnail}, #{item.summary}, #{item.title_name},
             #{item.title_contents},#{item.reporter},#{item.newspaper},#{item.open_yn},#{item.view_count},#{item.link})
-        </foreach>
-        on duplicate key update id = values(id)
     </insert>
 
     <insert id="batchInsert2" parameterType="java.util.List">
         INSERT INTO `naver_news`(`id`, `reg_date`, `category_id`, `thumbnail`, `summary`, `title_name`, `title_contents`, `reporter`, `newspaper`, `open_yn`, `view_count`, `link`)
         VALUES
-        <foreach collection="list" item="item" separator=",">
             (#{item.id}, now(),1, #{item.thumbnail}, #{item.summary}, #{item.titleName},
             #{item.titleContents},#{item.reporter},#{item.newspaper}, 'y', 0, #{item.link})
-        </foreach>
-        on duplicate key update id = values(id)
     </insert>
 
     <update id="updateNews">

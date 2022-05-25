@@ -18,7 +18,7 @@
                 Naver News
             </h1>
 
-<a href="/post/list.do">메인 가기</a>
+<a href="/home/home.do">메인 가기</a>
 
             <h2>전체 : ${totalCount} 건</h2>
             <div style="position: relative; top: -41px; left:700px;">
