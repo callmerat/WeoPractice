@@ -29,7 +29,7 @@
 	<!-- 데이터 소스 설정  -->
 	<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/mydb?useSSL=false&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;autoReconnect=true"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/mydb?useSSL=false&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Seoul&amp;autoReconnect=true"/>
 		<property name="username" value="root"/>
 		<property name="password" value="1234"/>
 	</bean>

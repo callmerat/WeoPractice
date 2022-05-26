@@ -9,7 +9,6 @@ public interface PostMapper {
 
     PostVO getPost(String postId);
 
-
     int writeProcess(PostVO postVO);
 
     int deleteProcess(String id);

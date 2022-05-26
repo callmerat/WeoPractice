@@ -8,7 +8,6 @@
 </head>
 <body>
 	
-	
 	<div id="test">
       <div>{{message}}</div>
       <h1>{{description}}</h1>

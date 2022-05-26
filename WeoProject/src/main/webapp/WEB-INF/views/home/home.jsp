@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <html>
 <head>
 <title>Home</title>
@@ -11,15 +10,14 @@
 	justify-content: space-around;
 }
 
-h1{
-text-align: center; 
-width:100%;
+h1 {
+	text-align: center;
+	width: 100%;
 }
 </style>
 </head>
 <body>
-	<h1>메인 페이지~ 좋은 하루 보내세요</h1>${sessionScope.loginVO}
-	${userId} ${sessionScope.userId} ${userVO} ${id} ${email}
+	<h1>메인 페이지~ 좋은 하루 보내세요</h1>
 	<hr>
 	<div class="container2">
 		<c:choose>
@@ -41,19 +39,19 @@ width:100%;
 	<div class="container">
 		<div class="row">
 			<p>
-				<a href="/news/news.do">뉴스</a>
+				<a href="/post/list.do">게시판 [스마트에디터, CRUD]</a>
 			</p>
 			<p>
-				<a href="/post/list.do">게시판</a>
+				<a href="/category/crud.do">카테고리 [CRUD]</a>
 			</p>
 			<p>
-				<a href="/news/news.do">연간 음주율 추이</a>
+				<a href="/news/news.do">뉴스 [크롤링, CRUD]</a>
 			</p>
 			<p>
-				<a href="/category/crud.do">카테고리 crud</a>
+				<a href="/excel/excel.do">월간 음주율 추이 [엑셀]</a>
 			</p>
 			<p>
-				<a href="test.do">vue.js 연습</a>
+				<a href="test.do">vue.js 연습 [vue.js]</a>
 			</p>
 
 		</div>

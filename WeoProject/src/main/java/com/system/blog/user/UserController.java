@@ -27,7 +27,13 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
+    // 회원가입 전환
+    @GetMapping(value = "registation.do")
+    private String registration() {
+        return "user/registration";
+    }
 
+    // 회원가입
     @PostMapping(value = "registrationProcess")
     private ResponseEntity registrationProcess(@Validated @RequestBody UserVO userVO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -37,21 +43,13 @@ public class UserController {
         return ResponseEntity.ok().body(ResponseVO.of("ok"));
     }
 
-    @GetMapping(value = "logout.do")
-    private String logout(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        LoginVO loginVO = (LoginVO) session.getAttribute("loginVO");
-        if (loginVO != null) {
-            session.invalidate();
-        }
-        return "user/login";
-    }
-
+    // 로그인 전환
     @GetMapping(value = "login.do")
     private String login() {
         return "user/login";
     }
 
+    // 로그인
     @PostMapping(value = "loginProcess")
     private ResponseEntity loginProcess(Model model, HttpServletRequest request, @RequestBody UserVO userVO) {
         UserVO user = userMapper.login(userVO);
@@ -64,13 +62,15 @@ public class UserController {
         } else {
             throw new RuntimeException("login failed");
         }
-        session.setAttribute("userVO", userVO);
+        session.setAttribute("loginVO", loginVO);
         return ResponseEntity.ok().body(ResponseVO.of("ok"));
     }
 
-    @GetMapping(value = "registation.do")
-    private String registration() {
-        return "user/registration";
+    // 로그아웃
+    @GetMapping(value = "logout.do")
+    private String logout(HttpSession session) {
+        session.removeAttribute("loginVO");
+        return "redirect:/home/home.do";
     }
-
+    
 }
