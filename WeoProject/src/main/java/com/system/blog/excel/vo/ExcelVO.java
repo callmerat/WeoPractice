@@ -1,4 +1,4 @@
-package com.system.blog.excel;
+package com.system.blog.excel.vo;
 
 import lombok.Data;
 

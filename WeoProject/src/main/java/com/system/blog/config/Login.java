@@ -23,5 +23,7 @@ public @interface Login {
 //reflection을 이용 Runtime시에 해당 Annotation 정보를 획득.
 //reflection : 구체적인 Class Type을 알지 못해도, 그 Class의 method, type, field들에 접근할 수 있도록 해주는 Java API
 
+//이제 로그인 체크를 하고 싶은 곳의 컨트롤러 메소드 파라미터에 @Login LoginVO loginVO를 작성해주기만 하면 된다.
 
-//이제 로그인 체크를 하고 싶은 곳의 메소드 파라미터에 @Login LoginVO loginVO를 작성해주기만 하면 된다.
+// LoginVO를 UserVO로 대체하면 초반 페이지부터 로그인을 하라고 하므로 곤란하다. 
+// 그래서 세션으로 'loginVO'를 만들어주기 위해 LoginVO가 필요하다.

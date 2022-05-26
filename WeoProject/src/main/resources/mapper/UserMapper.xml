@@ -21,4 +21,5 @@
         WHERE 1
           and id=#{userId}
     </select>
+    
 </mapper>

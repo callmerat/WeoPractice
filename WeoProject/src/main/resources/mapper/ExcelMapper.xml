@@ -3,10 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.system.blog.excel">
+<mapper namespace="com.system.blog.excel.mapper.ExcelMapper">
 
-    <select id="list" resultType="com.system.blog.excel.ExcelVO">
-        SELECT `time`, `age`, `male`, `female`
+    <select id="list" resultType="com.system.blog.excel.vo.ExcelVO">
+        SELECT `time`, `age`, `total`, `male`, `female`
         FROM `excel`
         WHERE 1
     </select>
