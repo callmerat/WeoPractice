@@ -47,7 +47,7 @@ width:100%;
 				<a href="/post/list.do">게시판</a>
 			</p>
 			<p>
-				<a href="/news/news.do">소주 매출</a>
+				<a href="/news/news.do">연간 음주율 추이</a>
 			</p>
 			<p>
 				<a href="/category/crud.do">카테고리 crud</a>

@@ -45,6 +45,14 @@ public class NaverNewsAdminController {
         return "naver_news/form";
     }
     
+
+    @RequestMapping(value = "/popup/view/{id}", method = RequestMethod.GET)
+    public String viewNews(@PathVariable("id") String id, Model model) {
+        NewsVONaver vo2 = service2.detailNewsNaver(id);
+
+        model.addAttribute("vo2", vo2);
+        return "naver_news/view";
+    }
     
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseVO createNews(@RequestBody NewsVONaver newsVONaver) {

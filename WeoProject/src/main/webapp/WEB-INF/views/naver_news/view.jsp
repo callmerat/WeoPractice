@@ -9,18 +9,18 @@
 </head>
 <body>
 <h1>
-	${vo.title_name}
+	${vo2.title_name}
 </h1>
     <p>
-        ${vo.reg_date},
-        ${vo.reporter},
-        ${vo.newspaper}
+        ${vo2.reg_date},
+        ${vo2.reporter},
+        ${vo2.newspaper}
     </p>
-    <p>원문: ${vo.link}</p>
+    <p>원문: ${vo2.link}</p>
 
-    <p>${vo.summary}</p>
-    <p><img src="${vo.thumbnail}" alt="${vo.title_name}"/></p>
-    <p style="line-height:160%;">${fn:replace(vo.title_contents, newLineChar, "<br/>")}</p>
+    <p>${vo2.summary}</p>
+    <p><img src="${vo2.thumbnail}" alt="${vo2.title_name}"/></p>
+    <p style="line-height:160%;">${fn:replace(vo2.title_contents, newLineChar, "<br/>")}</p>
 
 </body>
 </html>

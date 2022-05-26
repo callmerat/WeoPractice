@@ -9,15 +9,18 @@
 <body>
 	
 	
-	<div id="app">
+	<div id="test">
       <div>{{message}}</div>
       <h1>{{description}}</h1>
     </div>
-    
+	
+	<div id="test2">
+      <div>{{message}}</div>
+      <h1>{{description}}</h1>
+    </div>
 
 	<!-- vue.js를 사용하려면 다음의 코드를 작성해야 한다. -->
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
 
 	<!-- 기본 형태는 Vue 인스턴스를 생성하여 내부에 el 속성과 data 속성을 넣는 것이다. 아래와 같이 넣으면 된다.
 	
@@ -29,13 +32,24 @@
 	
 	 -->
 	<script>
-		var app = new Vue({
-			el : '#app',
+	
+		var app1 = new Vue({
+			el : '#test',
 			data : {
-				message : '안녕하세요 Vue!',
-				description : '반갑습니다',
+				message : '메시지1',
+				description : '안녕하세요?',
 			},
 		});
+		
+		var app2 = new Vue({
+			el : '#test2',
+			data : {
+				message : '메시지2',
+				description : '반갑습니다!',
+			},
+		});
+
 	</script>
+	
 </body>
 </html>
