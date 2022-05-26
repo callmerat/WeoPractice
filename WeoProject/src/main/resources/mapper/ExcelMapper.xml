@@ -11,4 +11,13 @@
         WHERE 1
     </select>
     
+    <insert id="batchInsert2" parameterType="java.util.List">
+        INSERT INTO `excel`(`time`, `age`, `total`, `male`, `female`)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id}, now(),1, #{item.thumbnail}, #{item.summary}, #{item.titleName},
+            #{item.titleContents},#{item.reporter},#{item.newspaper}, 'y', 0, #{item.link})
+        </foreach>
+    </insert>
+    
 </mapper>

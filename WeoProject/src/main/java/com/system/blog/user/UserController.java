@@ -59,10 +59,11 @@ public class UserController {
             loginVO.setUserId(user.getUserId());
             loginVO.setEmail(user.getEmail());
             loginVO.setName(user.getName());
+            session.setAttribute("loginVO", loginVO);
         } else {
             throw new RuntimeException("login failed");
         }
-        session.setAttribute("loginVO", loginVO);
+        
         return ResponseEntity.ok().body(ResponseVO.of("ok"));
     }
 
