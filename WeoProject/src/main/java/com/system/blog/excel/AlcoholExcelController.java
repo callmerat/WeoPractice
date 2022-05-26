@@ -42,7 +42,7 @@ public class AlcoholExcelController {
     private void alcohol_download(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         Resource resource = null;
-        resource = resourceLoader.getResource("classpath:excelTemplate/ExcelTemplate.xlsx");
+        resource = resourceLoader.getResource("classpath:excelTemplate/ExcelTemplate2.xlsx");
 
         if (resource == null) {
             throw new NoDataException("Excel template doesn't exist");
@@ -59,7 +59,7 @@ public class AlcoholExcelController {
 
     @PostMapping("/upload")
     private ResponseEntity
-    fitsizeUpload(@RequestBody MultipartFile fileObject) throws IOException {
+    fitsizeUpload(@RequestBody MultipartFile fileObject1) throws IOException {
 
         String[] colNames = {
                 "time",
@@ -69,10 +69,10 @@ public class AlcoholExcelController {
                 "female"
         };
 
-        if (fileObject == null) {
+        if (fileObject1 == null) {
             throw new NoDataException("Excel file doesn't exist");
         }
-        String extension = StringUtils.getFilenameExtension(fileObject.getOriginalFilename());
+        String extension = StringUtils.getFilenameExtension(fileObject1.getOriginalFilename());
         if (!"xlsx".equals(extension)) {
             throw new NoDataException("invalid Excel format file");
         }
@@ -80,7 +80,7 @@ public class AlcoholExcelController {
         List<EgovMap> pubMaps = null;
         try {
             pubMaps = ExcelUtils.xlsx_excelFileUpload(
-                    fileObject,
+                    fileObject1,
                     Arrays.asList(colNames));
 
         } catch (IOException e) {
