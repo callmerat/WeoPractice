@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.system.blog.news.naver.NaverNewsMapper">
+
     <insert id="createNewsNaver">
         insert into `naver_news` (`id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
         `title_name`, `title_contents`, `reporter`,
@@ -41,7 +42,6 @@
         id = #{id}
     </update>
 
-
     <select id="getNewsNaver" resultType="com.system.blog.news.naver.NewsVONaver">
         SELECT
         `id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
@@ -49,6 +49,7 @@
         `newspaper`, `open_yn`, `view_count`, `link`
         FROM `naver_news` WHERE 1
     </select>
+    
     <select id="getAllNewsNaver" resultType="com.system.blog.news.naver.NewsVONaver">
         SELECT
         `id`, `reg_date`, `category_id`, `thumbnail`, `summary`,
@@ -73,9 +74,11 @@
         FROM `naver_news`
         WHERE `id` = #{id}
     </select>
+    
     <select id="getCategoryNaver" resultType="egovframework.rte.psl.dataaccess.util.EgovMap">
         SELECT
         `id`, `name`, `sort`
         FROM `naver_news_category` WHERE 1
     </select>
+    
 </mapper>
